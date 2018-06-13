@@ -10,7 +10,7 @@ before_script:
 - git clone https://github.com/oxygine/oxygine-framework $OXYGINE_PATH
 - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
 - sudo apt-get update -qq
-- sudo apt-get install -qq g++-7 build-essential zlib1g-dev libsdl2-dev libpng-dev libpng12-dev graphviz doxygen
+- sudo apt-get install -qq g++-7 build-essential zlib1g-dev libsdl2-2.0-0 libglu1-mesa libglu1-mesa-dev libsdl2-dev libpng-dev libpng12-dev graphviz doxygen
 - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 60
 
 script:
@@ -20,3 +20,4 @@ script:
 env:
   global:
   - OXYGINE_PATH=/home/travis/build/oxygine-framework
+
