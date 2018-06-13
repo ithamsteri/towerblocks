@@ -1,5 +1,5 @@
-#ifndef TOWERBLOCKS_STAGE_H
-#define TOWERBLOCKS_STAGE_H
+#ifndef TOWERBLOCKS_BACKGROUND_H
+#define TOWERBLOCKS_BACKGROUND_H
 
 #include "Unit.h"
 #include <list>
@@ -8,18 +8,22 @@ using namespace oxygine;
 
 DECLARE_SMART(Background, spBackground);
 
-/// The Background is responsible for background objects.
+/// The Background is responsible for background objects in game.
 class Background : public Unit
 {
 public:
+  /// Move down all objects
+  /// @param offset height in pixel
+  /// @param ms time for move in milliseconds
   void offsetDown(float offset, int ms);
+
+  /// Add cloud on background.
   void addCloud();
 
 protected:
   std::list<spSprite> _objects;
 
   void _init() override;
-  void _update(const UpdateState& us) override;
 };
 
-#endif // TOWERBLOCKS_STAGE_H
+#endif // TOWERBLOCKS_BACKGROUND_H

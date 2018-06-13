@@ -10,14 +10,12 @@ Unit::init(const oxygine::Vector2& pos, Game* game)
   _view->setPosition(pos);
   _view->attachTo(game);
 
-  game->getUnits()->push_front(this);
-
   // should be overloaded in inherited classes
   _init();
 }
 
 void
-Unit::update(const oxygine::UpdateState& us)
+Unit::update(const UpdateState& us)
 {
   // should be overloaded in inherited classes
   _update(us);

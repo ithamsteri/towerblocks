@@ -31,6 +31,9 @@ void
 application_destroy()
 {
   // free scenes
+  HowToPlayScene::instance = nullptr;
+  HighScoreScene::instance = nullptr;
+  GameScene::instance = nullptr;
   MainMenuScene::instance = nullptr;
 
   res::free();
@@ -38,7 +41,4 @@ application_destroy()
 
 void
 application_update()
-{}
-void
-application_flush()
 {}

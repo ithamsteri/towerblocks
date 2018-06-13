@@ -21,12 +21,9 @@ public:
 
   void doThrowBlock();
 
-  List* getUnits() { return &_units; }
-
   bool isGameOver() const { return _lifes == 0; }
 
 private:
-  List _units;
   spBackground _background;
   spCrane _crane;
   spTower _tower;

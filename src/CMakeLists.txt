@@ -2,29 +2,29 @@ add_executable(towerblock
         main.cpp
         Application.cpp
         Application.h
-        Scene.cpp
-		Scene.h
-		MainMenuScene.cpp
-		MainMenuScene.h
-		Resource.cpp
-		Resource.h
-		HowToPlayScene.cpp
-		HowToPlayScene.h
-		GameScene.cpp
-		GameScene.h
-		Game.cpp
-		Game.h
-		Crane.cpp
-		Crane.h
-		Unit.cpp
-		Unit.h
-		Tower.cpp
-		Tower.h
-		Background.cpp
-		Background.h
+        Background.cpp
+        Background.h
+        Crane.cpp
+        Crane.h
+        Game.cpp
+        Game.h
+        GameScene.cpp
+        GameScene.h
         HighScoreScene.cpp
-		HighScoreScene.h
-		ScoreStorage.h
+        HighScoreScene.h
+        HowToPlayScene.cpp
+        HowToPlayScene.h
+        MainMenuScene.cpp
+        MainMenuScene.h
+        Resource.cpp
+        Resource.h
+        Scene.cpp
+        Scene.h
+        ScoreStorage.h
+        Tower.cpp
+        Tower.h
+        Unit.cpp
+        Unit.h
 		)
 
 target_compile_definitions(towerblock PRIVATE ${OXYGINE_DEFINITIONS})
