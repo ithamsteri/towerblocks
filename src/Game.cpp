@@ -17,7 +17,7 @@ Game::init()
 
   // add crane as game object
   _crane = new Crane;
-  _crane->init({}, this);
+  _crane->init({ getSize().x / 2, -120 }, this);
 
   _tower = new Tower;
   _towerLine = getSize().y - 300;

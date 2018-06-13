@@ -42,7 +42,7 @@ protected:
   /// @return new random block
   spSprite getNewBlock() const;
 
-  States _state = { States::FromBase };
+  States _state{ States::FromBase };
   spSprite _block;
 
   Vector2 _basePosition;

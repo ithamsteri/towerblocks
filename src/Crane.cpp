@@ -1,5 +1,4 @@
 #include "Crane.h"
-#include "Game.h"
 #include "Resource.h"
 #include <cmath>
 
@@ -29,12 +28,10 @@ Crane::_init()
   magnit->attachTo(_view);
   magnit->setPriority(50);
 
-  // set starting position
-  _basePosition = { _game->getSize().x / 2, -120 };
-  _view->setPosition(_basePosition);
-
+  // save base position for crane
+  _basePosition = _view->getPosition();
   // set length rope of crane
-  _length = _game->getSize().x / 2 - _game->getSize().x * 0.20f;
+  _length = _basePosition.x - _basePosition.x * 2 * 0.20f;
 
   moveFromBase();
 }
@@ -51,7 +48,7 @@ Crane::_update(const UpdateState& us)
   _velocity += _acceleration / us.dt * _speed;
   _angle += _velocity / us.dt * _speed;
 
-  float x = _game->getSize().x / 2 + std::sin(_angle) * _length;
+  float x = _basePosition.x + std::sin(_angle) * _length;
   float y = std::cos(_angle) * 0.5f * _length;
 
   _view->setPosition(x, y);
@@ -68,10 +65,10 @@ Crane::moveFromBase()
   // reset all parameters for pendulum
   _velocity = 0.0f;
   _acceleration = 0.0f;
-  _angle = (-0.5f * pi);
+  _angle = -0.5f * pi;
 
   // TODO: "Don't Repeat Yourself (DRY)"
-  float x = _game->getSize().x / 2 + std::sin(_angle) * _length;
+  float x = _basePosition.x + std::sin(_angle) * _length;
   float y = std::cos(_angle) * 0.5f * _length;
 
   auto t = _view->addTween(Actor::TweenPosition(x, y), speedAnimation);
