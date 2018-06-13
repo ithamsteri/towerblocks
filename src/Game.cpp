@@ -118,6 +118,7 @@ Game::doThrowBlock()
       scores->setText(std::to_string(_tower->getScores()));
       scores->attachTo(this);
 
+      _crane->stop();
       auto t = background->addTween(TweenDummy(), 3000);
       t->addEventListener(TweenEvent::DONE, [this](Event*) {
         this->_clock->pause();

@@ -20,6 +20,35 @@ Crane::doThrowBlock()
 }
 
 void
+Crane::start()
+{
+  _state = States::FromBase;
+
+  _block = getNewBlock();
+  _block->attachTo(_view);
+
+  // reset all parameters for pendulum
+  _velocity = 0.0f;
+  _acceleration = 0.0f;
+  _angle = -0.5f * pi;
+
+  // TODO: "Don't Repeat Yourself (DRY)"
+  float x = _basePosition.x + std::sin(_angle) * _length;
+  float y = std::cos(_angle) * 0.5f * _length;
+
+  auto t = _view->addTween(Actor::TweenPosition(x, y), speedAnimation);
+  t->addEventListener(TweenEvent::DONE, [this](Event*) { _state = States::Working; });
+}
+
+void
+Crane::stop()
+{
+  _state = States::Stopped;
+
+  auto t = _view->addTween(Actor::TweenPosition(_basePosition), speedAnimation);
+}
+
+void
 Crane::_init()
 {
   spSprite magnit = new Sprite;
@@ -33,7 +62,7 @@ Crane::_init()
   // set length rope of crane
   _length = _basePosition.x - _basePosition.x * 2 * 0.20f;
 
-  moveFromBase();
+  start();
 }
 
 void
@@ -55,33 +84,12 @@ Crane::_update(const UpdateState& us)
 }
 
 void
-Crane::moveFromBase()
-{
-  _state = States::FromBase;
-
-  _block = getNewBlock();
-  _block->attachTo(_view);
-
-  // reset all parameters for pendulum
-  _velocity = 0.0f;
-  _acceleration = 0.0f;
-  _angle = -0.5f * pi;
-
-  // TODO: "Don't Repeat Yourself (DRY)"
-  float x = _basePosition.x + std::sin(_angle) * _length;
-  float y = std::cos(_angle) * 0.5f * _length;
-
-  auto t = _view->addTween(Actor::TweenPosition(x, y), speedAnimation);
-  t->addEventListener(TweenEvent::DONE, [this](Event*) { _state = States::Working; });
-}
-
-void
 Crane::moveToBase()
 {
   _state = States::ToBase;
 
   auto t = _view->addTween(Actor::TweenPosition(_basePosition), speedAnimation);
-  t->addEventListener(TweenEvent::DONE, [this](Event*) { this->moveFromBase(); });
+  t->addEventListener(TweenEvent::DONE, [this](Event*) { this->start(); });
 }
 
 spSprite

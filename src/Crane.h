@@ -16,6 +16,12 @@ public:
   /// @return block from crane
   spSprite doThrowBlock();
 
+  /// Start crane work from base.
+  void start();
+
+  /// Stop crane work
+  void stop();
+
 protected:
   const float pi{ std::acos(-1.0f) };
   const float gravity{ -0.981f };
@@ -24,6 +30,7 @@ protected:
   /// Three states for crane: move from base, work as pendulum and move to base.
   enum class States
   {
+    Stopped,
     FromBase,
     Working,
     ToBase,
@@ -32,9 +39,6 @@ protected:
   void _init() override;
   void _update(const UpdateState& us) override;
 
-  /// Start crane work from base.
-  void moveFromBase();
-
   /// Start crane return to base.
   void moveToBase();
 
@@ -42,7 +46,7 @@ protected:
   /// @return new random block
   spSprite getNewBlock() const;
 
-  States _state{ States::FromBase };
+  States _state{ States::Stopped };
   spSprite _block;
 
   Vector2 _basePosition;
