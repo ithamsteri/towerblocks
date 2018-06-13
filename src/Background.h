@@ -21,7 +21,8 @@ public:
   void addCloud();
 
 protected:
-  std::list<spSprite> _objects;
+  // List of objects and depth factor.
+  std::list<std::pair<spSprite, float>> _objects;
 
   void _init() override;
 };

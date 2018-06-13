@@ -28,6 +28,8 @@
         <image id="Block6" file="block_06.png" />
         <image id="Block7" file="block_07.png" />
 
+        <image id="Sun" file="sun.png" />
+
         <image id="Cloud1" file="cloud_01.png" />
     </atlas>
     <set path = "fonts" />

@@ -6,8 +6,8 @@ void
 Background::offsetDown(float offset, int ms)
 {
   for (const auto& object : _objects) {
-    auto pos = object->getPosition();
-    object->addTween(Actor::TweenPosition(pos.x, pos.y + offset), ms);
+    auto pos = object.first->getPosition();
+    object.first->addTween(Actor::TweenPosition(pos.x, pos.y + offset * object.second), ms);
   }
 }
 
@@ -23,7 +23,7 @@ Background::addCloud()
   cloud->attachTo(_view);
   cloud->addTween(Actor::TweenX(_game->getSize().x), cloudSpeed, -1, true);
 
-  _objects.push_front(cloud);
+  _objects.push_front(std::make_pair<spSprite, float>(std::move(cloud), 1.0f));
 }
 
 void
@@ -34,5 +34,12 @@ Background::_init()
   bgStart->setResAnim(res::ui.getResAnim("Game_bg_start"));
   bgStart->attachTo(_view);
 
-  _objects.push_front(bgStart);
+  spSprite sun = new Sprite;
+  sun->setResAnim(res::ui.getResAnim("Sun"));
+  sun->setPosition(sun->getSize().x, -1 * sun->getSize().y);
+  sun->attachTo(_view);
+
+  _objects.push_front(std::make_pair<spSprite, float>(std::move(bgStart), 0.5f));
+  _objects.push_front(std::make_pair<spSprite, float>(std::move(sun), 0.1f));
+
 }
