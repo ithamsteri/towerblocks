@@ -3,11 +3,12 @@
 
 #include "oxygine-framework.h"
 
-namespace res
-{
-  extern oxygine::Resources ui;
-  void load();
-  void free();
+namespace res {
+extern oxygine::Resources ui;
+void
+load();
+void
+free();
 }
 
-#endif //TOWERBLOCKS_RESOURCE_H
+#endif // TOWERBLOCKS_RESOURCE_H

@@ -1,12 +1,13 @@
 #include "MainMenuScene.h"
-#include "Resource.h"
-#include "HowToPlayScene.h"
-#include "HighScoreScene.h"
 #include "GameScene.h"
+#include "HighScoreScene.h"
+#include "HowToPlayScene.h"
+#include "Resource.h"
 
 spMainMenuScene MainMenuScene::instance; // NOLINT
 
-MainMenuScene::MainMenuScene() {
+MainMenuScene::MainMenuScene()
+{
   // create background
   oxygine::spSprite background = new oxygine::Sprite;
   background->setResAnim(res::ui.getResAnim("MainMenu_Background"));
@@ -28,9 +29,8 @@ MainMenuScene::MainMenuScene() {
     button->addEventListener(oxygine::TouchEvent::OVER, cbMouseMove);
     button->addEventListener(oxygine::TouchEvent::OUT, cbMouseMove);
 
-    button->addEventListener(oxygine::TouchEvent::CLICK, [](oxygine::Event* e) -> void {
-      oxygine::logs::messageln("button clicked");
-    });
+    button->addEventListener(oxygine::TouchEvent::CLICK,
+                             [](oxygine::Event* e) -> void { oxygine::logs::messageln("button clicked"); });
 
     button->attachTo(_view);
 
@@ -38,7 +38,9 @@ MainMenuScene::MainMenuScene() {
   }
 }
 
-void MainMenuScene::onClick(oxygine::Event* ev) {
+void
+MainMenuScene::onClick(oxygine::Event* ev)
+{
   std::string id = ev->currentTarget->getName();
   auto button = _view->getChildT<oxygine::Sprite>(id);
 
@@ -61,7 +63,9 @@ void MainMenuScene::onClick(oxygine::Event* ev) {
   }
 }
 
-void MainMenuScene::onMouseMove(oxygine::Event* ev) {
+void
+MainMenuScene::onMouseMove(oxygine::Event* ev)
+{
   std::string id = ev->currentTarget->getName();
   auto button = _view->getChildT<oxygine::Sprite>(id);
 

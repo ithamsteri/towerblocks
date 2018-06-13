@@ -1,10 +1,11 @@
 #include "HowToPlayScene.h"
-#include "Resource.h"
 #include "MainMenuScene.h"
+#include "Resource.h"
 
 spHowToPlayScene HowToPlayScene::instance; // NOLINT
 
-HowToPlayScene::HowToPlayScene() {
+HowToPlayScene::HowToPlayScene()
+{
   // create background
   oxygine::spSprite background = new oxygine::Sprite;
   background->setResAnim(res::ui.getResAnim("HowToPlay_Background"));
@@ -22,7 +23,9 @@ HowToPlayScene::HowToPlayScene() {
   button->attachTo(_view);
 }
 
-void HowToPlayScene::onClick(oxygine::Event *ev) {
+void
+HowToPlayScene::onClick(oxygine::Event* ev)
+{
   std::string id = ev->currentTarget->getName();
 
   if (id == "back") {

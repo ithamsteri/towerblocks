@@ -7,7 +7,8 @@
 using namespace oxygine;
 
 DECLARE_SMART(HighScoreScene, spHighScoreScene);
-class HighScoreScene : public Scene {
+class HighScoreScene : public Scene
+{
 public:
   static spHighScoreScene instance;
 
@@ -23,7 +24,7 @@ private:
   void _show() override;
   void _hide() override;
 
-  void onClick(oxygine::Event *ev);
+  void onClick(oxygine::Event* ev);
 };
 
-#endif //TOWERBLOCKS_HIGHSCORESCENE_H
+#endif // TOWERBLOCKS_HIGHSCORESCENE_H

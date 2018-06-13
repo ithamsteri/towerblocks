@@ -1,18 +1,19 @@
 #ifndef TOWERBLOCKS_GAME_H
 #define TOWERBLOCKS_GAME_H
 
+#include "Background.h"
+#include "Crane.h"
+#include "Tower.h"
+#include "Unit.h"
 #include "oxygine-framework.h"
 #include <forward_list>
-#include "Unit.h"
-#include "Crane.h"
-#include "Background.h"
-#include "Tower.h"
 
 using namespace oxygine;
 
 DECLARE_SMART(Game, spGame);
 
-class Game : public oxygine::Actor {
+class Game : public oxygine::Actor
+{
   using List = std::forward_list<spUnit>;
 
 public:
@@ -35,10 +36,9 @@ private:
   spTextField _textTowerHeight;
 
   float _towerLine;
-  unsigned int _lifes {5};
+  unsigned int _lifes{ 5 };
 
   void doUpdate(const oxygine::UpdateState& us) override;
-
 };
 
-#endif //TOWERBLOCKS_GAME_H
+#endif // TOWERBLOCKS_GAME_H

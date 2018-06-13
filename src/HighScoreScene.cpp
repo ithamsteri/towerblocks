@@ -1,10 +1,10 @@
 #include "HighScoreScene.h"
+#include "MainMenuScene.h"
 #include "Resource.h"
 #include "ScoreStorage.h"
-#include "MainMenuScene.h"
 #include <array>
-#include <fstream>
 #include <cassert>
+#include <fstream>
 
 spHighScoreScene HighScoreScene::instance; // NOLINT
 
@@ -17,12 +17,12 @@ HighScoreScene::HighScoreScene()
 
   // show scores in table
   TextStyle style =
-      TextStyle(res::ui.getResFont("main")).withColor(Color::White).withFontSize(52).alignMiddle().alignLeft();
+    TextStyle(res::ui.getResFont("main")).withColor(Color::White).withFontSize(52).alignMiddle().alignLeft();
 
   _scores.reserve(scores);
   for (size_t i = 0; i < scores; ++i) {
     spTextField score = new TextField;
-    score->setPosition(110, 136 + i*68);
+    score->setPosition(110, 136 + i * 68);
     score->setStyle(style);
     score->setText("0");
     score->attachTo(_view);
@@ -42,7 +42,8 @@ HighScoreScene::HighScoreScene()
   button->attachTo(_view);
 }
 
-void HighScoreScene::_show()
+void
+HighScoreScene::_show()
 {
   std::array<unsigned int, scores> results = ScoreStorage<scores>::load();
 
@@ -52,11 +53,15 @@ void HighScoreScene::_show()
   }
 }
 
-void HighScoreScene::_hide() {
+void
+HighScoreScene::_hide()
+{
   // ??
 }
 
-void HighScoreScene::onClick(oxygine::Event *ev) {
+void
+HighScoreScene::onClick(oxygine::Event* ev)
+{
   std::string id = ev->currentTarget->getName();
 
   if (id == "back") {

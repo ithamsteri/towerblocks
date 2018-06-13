@@ -1,9 +1,11 @@
 #include "Crane.h"
-#include "Resource.h"
 #include "Game.h"
+#include "Resource.h"
 #include <cmath>
 
-void Crane::_update(const oxygine::UpdateState &us) {
+void
+Crane::_update(const oxygine::UpdateState& us)
+{
   if (_length > 0) {
     _acceleration = gravity / _length * std::sin(_angle);
     _velocity += _acceleration / us.dt * _speed;
@@ -26,7 +28,9 @@ void Crane::_update(const oxygine::UpdateState &us) {
   }
 }
 
-void Crane::_init() {
+void
+Crane::_init()
+{
 
   oxygine::spSprite magnit = new oxygine::Sprite;
   magnit->setResAnim(res::ui.getResAnim("Game_CraneMagnit"));
@@ -35,7 +39,9 @@ void Crane::_init() {
   magnit->setPriority(100);
 }
 
-spSprite Crane::doThrowBlock() {
+spSprite
+Crane::doThrowBlock()
+{
   if (_state != States::Working) {
     return nullptr;
   }
@@ -48,7 +54,9 @@ spSprite Crane::doThrowBlock() {
   return _block;
 }
 
-void Crane::doNewBlock() {
+void
+Crane::doNewBlock()
+{
   if (_state != States::Waiting) {
     return;
   }

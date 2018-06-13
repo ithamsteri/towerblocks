@@ -26,13 +26,13 @@ public:
   unsigned int getTowerHeight() const noexcept { return _height; }
 
 protected:
-  const float blockWidthHit {60};
+  const float blockWidthHit{ 60 };
 
   std::list<spSprite> _blocks;
 
-  float _towerLine, _lastPosX {0};
-  float _shakeValue, _angle {0.0f};
-  unsigned int _height {0},_scores {0};
+  float _towerLine, _lastPosX{ 0 };
+  float _shakeValue, _angle{ 0.0f };
+  unsigned int _height{ 0 }, _scores{ 0 };
 
   void _init() override;
   void _update(const UpdateState& us) override;

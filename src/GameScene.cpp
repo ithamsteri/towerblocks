@@ -3,29 +3,36 @@
 
 spGameScene GameScene::instance; // NOLINT
 
-void GameScene::newGame() {
+void
+GameScene::newGame()
+{
   _game = new Game();
   _game->init();
   _game->attachTo(_view);
   _game->setClock(new Clock);
 }
 
-GameScene::GameScene() {
+GameScene::GameScene()
+{
   newGame();
 
-  //create menu button
+  // create menu button
   // TODO: Make exit button under Game Actor for pause and go to Main Menu.
   // TODO: If game is paused - add Resume button to Main Menu.
 
   _view->addEventListener(oxygine::TouchEvent::CLICK, CLOSURE(this, &GameScene::onClick));
 }
 
-void GameScene::onClick(oxygine::Event *ev) {
+void
+GameScene::onClick(oxygine::Event* ev)
+{
   // every click button throw block
   _game->doThrowBlock();
 }
 
-void GameScene::_show() {
+void
+GameScene::_show()
+{
   logs::messageln("IN");
   if (_game->isGameOver()) {
     _game->detach();

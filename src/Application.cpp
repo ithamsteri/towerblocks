@@ -1,15 +1,19 @@
 #include "GameScene.h"
+#include "HighScoreScene.h"
 #include "HowToPlayScene.h"
 #include "MainMenuScene.h"
 #include "Resource.h"
-#include "HighScoreScene.h"
 #include "oxygine-framework.h"
 #include <array>
 #include <vector>
 
-void application_preinit() {}
+void
+application_preinit()
+{}
 
-void application_init() {
+void
+application_init()
+{
   // load resources
   res::load();
 
@@ -23,12 +27,18 @@ void application_init() {
   MainMenuScene::instance->show();
 }
 
-void application_destroy() {
+void
+application_destroy()
+{
   // free scenes
   MainMenuScene::instance = nullptr;
 
   res::free();
 }
 
-void application_update() {}
-void application_flush() {}
+void
+application_update()
+{}
+void
+application_flush()
+{}

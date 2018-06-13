@@ -1,7 +1,9 @@
 #include "Unit.h"
 #include "Game.h"
 
-void Unit::init(const oxygine::Vector2 &pos, Game *game) {
+void
+Unit::init(const oxygine::Vector2& pos, Game* game)
+{
   _game = game;
 
   _view = new oxygine::Actor;
@@ -14,7 +16,9 @@ void Unit::init(const oxygine::Vector2 &pos, Game *game) {
   _init();
 }
 
-void Unit::update(const oxygine::UpdateState &us) {
+void
+Unit::update(const oxygine::UpdateState& us)
+{
   // should be overloaded in inherited classes
   _update(us);
 }

@@ -2,11 +2,12 @@
 #define TOWERBLOCKS_GAMESCENE_H
 
 #include "Game.h"
-#include "Scene.h"
 #include "MainMenuScene.h"
+#include "Scene.h"
 
 DECLARE_SMART(GameScene, spGameScene);
-class GameScene : public Scene {
+class GameScene : public Scene
+{
 public:
   static spGameScene instance;
 
@@ -17,7 +18,7 @@ private:
   void _show() override;
   void newGame();
 
-    spGame _game;
+  spGame _game;
 };
 
-#endif //TOWERBLOCKS_GAMESCENE_H
+#endif // TOWERBLOCKS_GAMESCENE_H

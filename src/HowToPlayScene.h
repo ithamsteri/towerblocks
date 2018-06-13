@@ -4,14 +4,15 @@
 #include "Scene.h"
 
 DECLARE_SMART(HowToPlayScene, spHowToPlayScene);
-class HowToPlayScene : public Scene {
+class HowToPlayScene : public Scene
+{
 public:
   static spHowToPlayScene instance;
 
   HowToPlayScene();
 
 private:
-  void onClick(oxygine::Event *ev);
+  void onClick(oxygine::Event* ev);
 };
 
-#endif //TOWERBLOCKS_HOWTOPLAYSCENE_H
+#endif // TOWERBLOCKS_HOWTOPLAYSCENE_H

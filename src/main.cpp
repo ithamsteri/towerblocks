@@ -13,7 +13,9 @@
 using namespace oxygine;
 
 // This function is called each frame
-int mainloop() {
+int
+mainloop()
+{
   // Update engine-internal components
   // If input events are available, they are passed to
   // Stage::instance.handleEvent If the function returns true, it means that the
@@ -41,7 +43,9 @@ int mainloop() {
 }
 
 // Application entry point
-void run() {
+void
+run()
+{
   ObjectBase::__startTracingLeaks();
 
   // Initialize Oxygine's internal stuff
@@ -88,7 +92,8 @@ void run() {
   // This is the main game loop.
   while (1) {
     int done = mainloop();
-    if (done) break;
+    if (done)
+      break;
   }
   /*
    If we get here, the user has requested the Application to terminate.
@@ -124,24 +129,26 @@ void run() {
 #include "SDL.h"
 #include "SDL_main.h"
 
-extern "C" {
-void one(void* param) { mainloop(); }
-void oneEmsc() { mainloop(); }
+extern "C"
+{
+  void one(void* param) { mainloop(); }
+  void oneEmsc() { mainloop(); }
 
-int main(int argc, char* argv[]) {
-  run();
+  int main(int argc, char* argv[])
+  {
+    run();
 
 #if TARGET_OS_IPHONE || TARGET_OS_SIMULATOR
-  // If parameter 2 is set to 1, refresh rate will be 60 fps, 2 - 30 fps, 3 - 15
-  // fps.
-  // SDL_iPhoneSetAnimationCallback(core::getWindow(), 1, one, nullptr);
+    // If parameter 2 is set to 1, refresh rate will be 60 fps, 2 - 30 fps, 3 - 15
+    // fps.
+    // SDL_iPhoneSetAnimationCallback(core::getWindow(), 1, one, nullptr);
 #endif
 
 #if EMSCRIPTEN
-  emscripten_set_main_loop(oneEmsc, 0, 0);
+    emscripten_set_main_loop(oneEmsc, 0, 0);
 #endif
 
-  return 0;
-}
+    return 0;
+  }
 };
 #endif

@@ -1,17 +1,17 @@
 #include "Resource.h"
 
-namespace res
+namespace res {
+oxygine::Resources ui; // NOLINT
+
+void
+load()
 {
-  oxygine::Resources ui; // NOLINT
+  ui.loadXML("res.xml");
+}
 
-  void load()
-  {
-    ui.loadXML("res.xml");
-  }
-
-  void free()
-  {
-    ui.free();
-
-  }
+void
+free()
+{
+  ui.free();
+}
 }

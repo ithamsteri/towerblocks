@@ -5,17 +5,23 @@
 
 /// Base class for Scenes
 DECLARE_SMART(Scene, spScene);
-class Scene : public oxygine::EventDispatcher  {
+class Scene : public oxygine::EventDispatcher
+{
 public:
   Scene();
 
-  class HiddenEvent: public oxygine::Event
+  class HiddenEvent : public oxygine::Event
   {
   public:
-    //define unique int ID with makefourcc 'SHid' = SceneHidden
-    enum {EVENT = makefourcc('S', 'H', 'i', 'd')};
+    // define unique int ID with makefourcc 'SHid' = SceneHidden
+    enum
+    {
+      EVENT = makefourcc('S', 'H', 'i', 'd')
+    };
 
-    HiddenEvent(Scene* scene_): Event(EVENT), scene(scene_) {};
+    HiddenEvent(Scene* scene_)
+      : Event(EVENT)
+      , scene(scene_){};
     Scene* scene;
   };
 
@@ -26,7 +32,7 @@ public:
   /// @param next next scene
   void changeScene(spScene next);
 
-  oxygine::spActor getView() const {return _view;}
+  oxygine::spActor getView() const { return _view; }
 
 protected:
   virtual void _show() {}
@@ -36,4 +42,4 @@ protected:
   oxygine::spActor _view;
 };
 
-#endif //TOWERBLOCKS_SCENE_H
+#endif // TOWERBLOCKS_SCENE_H

@@ -1,6 +1,6 @@
 #include "Tower.h"
-#include "Resource.h"
 #include "Game.h"
+#include "Resource.h"
 
 void
 Tower::_init()
