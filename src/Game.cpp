@@ -17,8 +17,7 @@ Game::init()
 
   // add crane as game object
   _crane = new Crane;
-  _crane->init({ getSize().x / 2, 120 }, this);
-  _crane->doNewBlock();
+  _crane->init({}, this);
 
   _tower = new Tower;
   _towerLine = getSize().y - 300;
@@ -125,7 +124,5 @@ Game::doThrowBlock()
         GameScene::instance->changeScene(MainMenuScene::instance);
       });
     }
-
-    _crane->doNewBlock();
   });
 }

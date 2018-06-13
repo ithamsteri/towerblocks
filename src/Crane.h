@@ -8,37 +8,47 @@ using namespace oxygine;
 
 DECLARE_SMART(Crane, spCrane);
 
-/// Crane is mechanical pendulum.
+/// Crane is mechanical pendulum for throw blocks on tower.
 class Crane : public Unit
 {
 public:
-  void doNewBlock();
-
+  /// Throw block from crane and get this block.
+  /// @return block from crane
   spSprite doThrowBlock();
 
 protected:
-  const float pi = std::acos(-1.0f);
-  const float gravity = -0.981f;
+  const float pi{ std::acos(-1.0f) };
+  const float gravity{ -0.981f };
+  const timeMS speedAnimation{ 360 };
 
+  /// Three states for crane: move from base, work as pendulum and move to base.
   enum class States
   {
     FromBase,
     Working,
     ToBase,
-    Waiting,
   };
 
   void _init() override;
   void _update(const UpdateState& us) override;
 
-  // block for magnit
+  /// Start crane work from base.
+  void moveFromBase();
+
+  /// Start crane return to base.
+  void moveToBase();
+
+  /// Get new random block sprite
+  /// @return new random block
+  spSprite getNewBlock() const;
+
+  States _state = { States::FromBase };
   spSprite _block;
 
-  // Pendulum simulation parameters
-  float _length{ 0.00f }, _speed{ -8.5f }, _velocity{ 0.0f }, _acceleration{ 0.0f }, _angle{ 0.5f * pi };
+  Vector2 _basePosition;
 
-  // TODO: Start with FromBase state
-  States _state = { States::Waiting };
+  // Pendulum simulation parameters
+  float _length{ 0.00f }, _speed{ -8.5f }, _velocity{ 0.0f }, _acceleration{ 0.0f }, _angle{ -0.5f * pi };
 };
 
 #endif // TOWERBLOCKS_CRANE_H

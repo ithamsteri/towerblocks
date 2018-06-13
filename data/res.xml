@@ -18,7 +18,7 @@
         <image id="Game_bg_gameover" file="bg_gameover.png" />
 
         <image id="Game_Basement" file="basement.png" />
-        <image id="Game_CraneMagnit" file="crane_magnit.png" />
+        <image id="Game_CraneMagnet" file="crane_magnet.png" />
 
         <image id="Block1" file="block_01.png" />
         <image id="Block2" file="block_02.png" />
