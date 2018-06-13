@@ -14,11 +14,14 @@ Background::offsetDown(float offset, int ms)
 void
 Background::addCloud()
 {
+  // all cloud have random speed
+  auto cloudSpeed = static_cast<timeMS>(scalar::randFloat(15000.0f, 30000.0f));
+
   spSprite cloud = new Sprite;
   cloud->setResAnim(res::ui.getResAnim("Cloud1"));
   cloud->setPosition(-1 * cloud->getSize().x, -1 * cloud->getSize().y);
   cloud->attachTo(_view);
-  cloud->addTween(Actor::TweenX(_game->getSize().x), 20000, -1, true); // TODO: Change value 20000 on random value
+  cloud->addTween(Actor::TweenX(_game->getSize().x), cloudSpeed, -1, true);
 
   _objects.push_front(cloud);
 }
