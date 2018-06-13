@@ -1,8 +1,10 @@
 # TowerBlocks game
 
+[![Build Status](https://www.travis-ci.org/ithamsteri/towerblocks.svg?branch=master)](https://www.travis-ci.org/ithamsteri/towerblocks)
+
 ![alt text](screenshot.png "screenshot")
 
-Gameplay video: https://youtu.be/Z2A7I9lAfYM
+Gameplay video: https://youtu.be/wRYrkqACG0s
 
 ## How to build
 

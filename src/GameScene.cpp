@@ -33,11 +33,9 @@ GameScene::onClick(oxygine::Event* ev)
 void
 GameScene::_show()
 {
-  logs::messageln("IN");
   if (_game->isGameOver()) {
     _game->detach();
     newGame();
   }
   _game->getClock()->resetPause();
-  logs::messageln("OUT");
 }
