@@ -5,9 +5,16 @@
 void
 Background::offsetDown(float offset, int ms)
 {
-  for (const auto& object : _objects) {
-    auto pos = object.first->getPosition();
-    object.first->addTween(Actor::TweenPosition(pos.x, pos.y + offset * object.second), ms);
+  for (auto iter = _objects.begin(); iter != _objects.end();) {
+    auto& pos = iter->first->getPosition();
+
+    if (pos.y > _game->getSize().y + iter->first->getSize().y) {
+      iter = _objects.erase(iter);
+      continue;
+    }
+
+    iter->first->addTween(Actor::TweenPosition(pos.x, pos.y + offset * iter->second), ms);
+    ++iter;
   }
 }
 
@@ -23,7 +30,7 @@ Background::addCloud()
   cloud->attachTo(_view);
   cloud->addTween(Actor::TweenX(_game->getSize().x), cloudSpeed, -1, true);
 
-  _objects.push_front(std::make_pair<spSprite, float>(std::move(cloud), 1.0f));
+  _objects.emplace_front(std::move(cloud), 1.0f);
 }
 
 void
@@ -39,7 +46,6 @@ Background::_init()
   sun->setPosition(sun->getSize().x, -1 * sun->getSize().y);
   sun->attachTo(_view);
 
-  _objects.push_front(std::make_pair<spSprite, float>(std::move(bgStart), 0.5f));
-  _objects.push_front(std::make_pair<spSprite, float>(std::move(sun), 0.1f));
-
+  _objects.emplace_front(std::move(bgStart), 0.5f);
+  _objects.emplace_front(std::move(sun), 0.1f);
 }
